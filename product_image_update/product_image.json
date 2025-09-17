@@ -1,0 +1,22 @@
+{
+  "header": {
+    "version": "2.0",
+    "sellerId": "ABBEY8IS5XPDN"
+  },
+  "messages": [
+    {
+      "messageId": 1,
+      "sku": "0A-SLD7-P9Y1",
+      "operationType": "PARTIAL_UPDATE",
+      "productType": "PUZZLES",
+      "attributes": {
+        "main_image": [
+          {
+            "marketplace_id": "A21TJRUUN4KGV",  
+            "value": "https://cdn.mystore.com/images/main-image.jpg"
+          }
+        ]
+      }
+    }
+  ]
+}
