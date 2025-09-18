@@ -366,6 +366,15 @@ def get_content_status_official(access_token: str, content_reference_key: str, r
         
     Returns:
         Dict with status information
+
+    in includeDataSet -> you can put 2 values, either METADATA or CONTENTS
+        METADATA -> returs APPROVED or REJECTED or DRAFT or SUBMITTED
+            APPROVED -> The content is approved and will be published to the applied ASINs.
+            DRAFT -> The content has not been submitted for approval.
+            REJECTED ->	The content is rejected in review and must be revised and resubmitted based on the rejection reasons provided.
+            SUBMITTED -> The content is submitted for approval and is waiting for review.
+
+        CONTENTS -> has the data of the aplus content
     """
     url = f"https://sellingpartnerapi-{region}.amazon.com/aplus/2020-11-01/contentDocuments/{content_reference_key}?includedDataSet=METADATA"
     
@@ -426,14 +435,17 @@ if __name__ == "__main__":
         print("❌ Upload destination creation failed.")
         check_upload = False
 
+    #test the content and clear the errors, if there are no errors the please uncomment the below function and then continue 
     validate_content_document_ckeck_for_fixes(access_token, upload_destination_id, marketplace_id, doc_name, locale,
                                            headline_value, alt_text, body_text, asin_list)
     
+    
+    #ref_key = create_content_document(access_token, upload_destination_id, marketplace_id, doc_name, locale, headline_value, alt_text, body_text)
 
-    ref_key = create_content_document(access_token, upload_destination_id, marketplace_id, doc_name, locale, headline_value, alt_text, body_text)
+    #once you get the ref_key from the about function, please re check it with this fucntion and then check for errors
+    #add_asins_to_content_to_re_ckeck(access_token, ref_key, marketplace_id, asin_list)
 
-    add_asins_to_content_to_re_ckeck(access_token, ref_key, marketplace_id, asin_list)
-
-    get_content_status_official(access_token, ref_key, region)
+    #After do it without errors wait at least for 1 hour before using this function, to get if it was approved or not
+    #get_content_status_official(access_token, ref_key, region)
 
     
