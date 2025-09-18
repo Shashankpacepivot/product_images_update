@@ -14,31 +14,28 @@ AMAZON A+ CONTENT UPLOAD MODULE - TESTING VERSION
 ================================================
 
 ⚠️ IMPORTANT NOTES:
-- This module is FOR TESTING PURPOSES ONLY
-- Contains HARDCODED values that need to be parameterized for production
-- Many variables in functions are redundant and need cleanup
+- This module is FOR TESTING PURPOSES ONLY AND YET TO BE TESTED
 
 📋 PROCESS OVERVIEW:
 This module implements Amazon's official A+ Content upload process using SP-API.
-Complete workflow orchestrated by `complete_aplus_upload_official()` function.
+Complete workflow orchestrated in the main section function.
 
 🔄 7-STEP PROCESS:
-1. Image Upload to S3 (using upload_image_to_s3 utility)
-2. Content Validation (validate_content_document)
-3. Content Document Creation (create_content_document_official)
-4. ASIN Association (add_asins_to_content)
-5. Approval Submission (submit_for_approval)
-6. Status Monitoring (get_content_status_official)
+1. Create a destination to upload the image(using create_upload_destination function)
+2. Image Upload to S3 (using upload_image_to_s3 function)
+3. Content Validation (validate_content_document_ckeck_for_fixes)
+4. Content Document Creation (create_content_document)
+5. ASIN Association (add_asins_to_content_to_re_ckeck)
+6. Approval Submission (get_content_status_official)
 7. Final Review (7-14 business days)
 
 🔧 HARDCODED TEST VALUES (NEED TO BE PARAMETERIZED):
-- ACCESS_TOKEN: "your_sp_api_access_token"
 - MARKETPLACE_ID: "A21TJRUUN4KGV" (India)
 - TEST_ASIN: "B09NP5DN4P"
-- IMAGE_PATH: "/home/mizutoocha/Work/repo/ecomB/backend-mvp/static/temp/6057529352549158114.jpg"
+- IMAGE_PATH: "/absolute/path/to/Image1.jpeg"
 - REGION: "eu" (Europe)
 - CONTENT_TYPE: "STANDARD_HEADER_IMAGE_TEXT"
-- LOCALE: "en-IN" / "en-US" (inconsistent usage)
+- LOCALE: "en-IN"
 
 📊 API ENDPOINTS USED:
 - POST /aplus/2020-11-01/contentAsinValidations (Validation)
